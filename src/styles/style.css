@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+:root{
+    --main-bg-color: #047857;
+    --main-font: 'Lato', sans-serif;
+    --main-font-color: #f8fafc;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+    grid-template-columns: minmax(200px,1fr) 5fr;
+    height: 100vh;
+}
+
+header{
+    background-color: var(--main-bg-color);
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 1px 5px black;
+    z-index: 2;
+    font-family: var(--main-font);
+    color: var(--main-font-color)
+}
+
+nav{
+    background-color: var(--main-bg-color);
+    box-shadow: 1px 0px 5px black;
+    z-index: 1;
+    padding: 30px;
+    font-family: var(--main-font);
+    color: var(--main-font-color);
+
+    display: grid;
+    grid-template-rows: 1fr 4fr auto 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+nav .projects{
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.1rem;
+}
+
+nav div.title{
+    display: flex;
+    gap: 20px;
+}
+
+nav .wrapper{
+    align-self: start;
+    display: none;
+}
+
+nav .wrapper.open{
+    display: block;
+}
+
+nav .wrapper .add{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+nav .add input[type=text]{
+    width: 100%;
+    border-radius: 5px;
+}
+
+nav .add input[type=text]:focus{
+    outline: none;
+    border: solid 2px #ebebeb;
+}
+
+nav .add svg:hover{
+    color: #2132ec;
+}
+
+main{
+    background-color: #cbd5e1;
+}
