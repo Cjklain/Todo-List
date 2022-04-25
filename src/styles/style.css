@@ -82,9 +82,72 @@ nav .add input[type=text]:focus{
 }
 
 nav .add svg:hover{
-    color: #2132ec;
+    color: #4554f4;
 }
 
 main{
-    background-color: #cbd5e1;
+    background-color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .card{
+    background-color: #f1f5f9;
+    width: 70%;
+    height: 70%;
+    border: solid 3px black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px black;
+}
+
+main .card .card-head{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+main .card .card-head .options{
+    align-self: flex-end;
+}
+
+main .card .card-body .card-add{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    /* border-bottom: 1px solid black; */
+}
+
+main .card .card-body .card-add input[type=text]{
+    border-radius: 5px;
+    outline: none;
+    padding: 2px;
+}
+
+main .card .card-body .card-add input[type=text]:focus{
+    border: solid 2px #16a34a;
+}
+main .card .card-body .card-add>svg:hover{
+    color: #16a34a;   
+}
+
+main .card .card-body .tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 2px;
+}
+
+main .card .card-body .tasks .task{
+    display: flex;
+    justify-content: center;
+    background-color: #e2e8f0;;
+    padding: 5px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    box-shadow: 0px 0px 1px black; 
 }
