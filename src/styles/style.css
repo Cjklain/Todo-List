@@ -8,6 +8,7 @@
     --main-bg-color: #047857;
     --main-font: 'Lato', sans-serif;
     --main-font-color: #f8fafc;
+    --main-hover-color: #85888d;
 }
 
 body{
@@ -51,6 +52,23 @@ nav .projects{
     font-size: 1.1rem;
 }
 
+nav .projects .project{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 5px;
+    border: var(--main-bg-color) solid 1px;
+}
+
+nav .projects .project:hover{
+    color: var(--main-hover-color)
+}
+
+nav .projects .project.selected{
+    border: white solid 1px;
+    border-radius: 5px;
+}
+
 nav div.title{
     display: flex;
     gap: 20px;
@@ -69,6 +87,7 @@ nav .wrapper .add{
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    gap: 10px;
 }
 
 nav .add input[type=text]{
@@ -81,24 +100,43 @@ nav .add input[type=text]:focus{
     border: solid 2px #ebebeb;
 }
 
-nav .add svg:hover{
-    color: #4554f4;
+nav .add button:hover{
+    color: var(--main-hover-color)
 }
 
+nav .add>button{
+    border-radius: 5px;
+    border: 1px solid var(--main-bg-color);
+}
+nav .add button svg{
+    height: 1.3rem;
+}
 main{
+    font-family: var(--main-font);
     background-color: #f8fafc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px;
 }
 
 main .card{
+    /* display: none; */
+    grid-column: 2/3;
     background-color: #f1f5f9;
-    width: 70%;
-    height: 70%;
+    padding: 15px;
     border: solid 3px black;
     border-radius: 10px;
     box-shadow: 0px 0px 3px black;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+
+main .card.open{
+    /* display: block; */
+    opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 main .card .card-head{
@@ -138,16 +176,18 @@ main .card .card-body .card-add>svg:hover{
 main .card .card-body .tasks{
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
     padding-top: 2px;
 }
 
 main .card .card-body .tasks .task{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto 10fr 1fr;
+    gap: 10px;
+    align-items: center;
     background-color: #e2e8f0;;
     padding: 5px;
     border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    box-shadow: 0px 0px 1px black; 
+    /* border-right: 1px solid grey; */
+    box-shadow: 0px 0px 1px black;
 }

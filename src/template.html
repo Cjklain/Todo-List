@@ -14,27 +14,26 @@
         <h2>Your Projects</h2>
 
         <div class="projects">
-            <div>Project 1</div>
-            <div>Project 1</div>
-            <div>Project 1</div>
-            <div>Project 1</div>
-            <div>Project 1</div>
+            <div class="project">Project 1</div>
+            <div class="project">Project 2</div>
         </div>
         <div class="title">New</div>
-        <div class="wrapper">
+        <div class="wrapper open">
             <div class="add">
                 <input type="text" name="Name" id="Name" placeholder="Name">
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-                </svg>
+                <button class="add-project">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
     <main>
         <div class="card">
             <div class="card-head">
-                <div class="name">
-                    <h2>Project 1</h2>
+                <div class="card-name">
+                    <h2 class="card-title">Project 1</h2>
                 </div>
                 <div class="options">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -54,9 +53,27 @@
                     </svg>
                 </div>
                 <div class="tasks">
-                    <div class="task">Task1</div>
-                    <div class="task">Task2</div>
-                    <div class="task">Task3</div>
+                    <div class="task">
+                        <input type="checkbox">
+                        <div class="text">Task 1</div>
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+                        </svg>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox">
+                        <div class="text">Task 3</div>
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+                        </svg>
+                    </div>
+                    <div class="task">
+                        <input type="checkbox">
+                        <div class="text">Task 3</div>
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
