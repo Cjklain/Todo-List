@@ -8,9 +8,11 @@ const addButton = document.querySelector('.add-project');
 console.log(addButton);
 
 const divProjects = document.querySelector('.projects')
+const deleteButton = document.querySelector('.delete')
+console.log(deleteButton);
 
 const cardTitle = document.querySelector('.card-title')
-console.log(cardTitle);
+
 
 let projectSheel = []
 
@@ -19,20 +21,23 @@ class Project{
         this.name = name;
         this.id = idMaker();
         this.displayProject = this.displayProject.bind(this)
+        this.deleteProject = this.deleteProject.bind(this)
     }
     addToShell(){
         const div = document.createElement('div')
         div.classList.add('project')
         div.innerText = this.name
         divProjects.appendChild(div)
+        this.displayProject();
         div.addEventListener('click', this.displayProject)
         div.addEventListener('click', this.markAsSelected)
+        deleteButton.addEventListener('click',this.deleteProject)
     }
     displayProject(){
         cardTitle.textContent = this.name
-
-        displayCard();
         console.log(this);
+        displayCard()
+        
     }
     markAsSelected(){
         const divProject = document.querySelectorAll('.project')
@@ -42,6 +47,12 @@ class Project{
                 project.classList.add('selected')
             }
         })
+    }
+    deleteProject(){
+        // deleteButton.addEventListener()
+        console.log(this);
+        // console.log(this.markAsSelected.divProject);
+        
     }
     
 }
@@ -55,10 +66,9 @@ function addProject(e){
     projectSheel.push(project)
     nameInput.value = '';
     console.log(projectSheel);
-    // displayProject(project)
+
     project.addToShell()
     if(projectSheel.length>=9){
         alert('sorry you reach limit')
     }
 }
-

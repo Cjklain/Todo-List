@@ -1,6 +1,9 @@
 export default displayCard
-const divCard = document.querySelector('.card');
+
+const divCard = document.querySelector('.card')
 
 function displayCard(){
-    divCard.classList.add('open')
+    divCard.classList.remove('open')
+    setTimeout(()=> divCard.classList.add('open'),100)
+    
 }
