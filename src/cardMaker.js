@@ -18,8 +18,8 @@ function cardMaker(name){
 <div class="card-body">
     <div class="card-add">
         <h4>Add task:</h4>
-        <input type="text">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <input type="text" name="task-name" id="task-name">
+        <svg class="task-add" style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
         </svg>
     </div>

@@ -3,15 +3,14 @@ import idMaker from './id';
 import {fadeForCard, hideCard} from './card';
 import cardMaker from './cardMaker';
 
-
 const nameInput = document.getElementById('Name');
-console.log(nameInput);
+
 const addButton = document.querySelector('.add-project');
-console.log(addButton);
+
 
 const divProjects = document.querySelector('.projects')
 const deleteButton = document.querySelector('.delete')
-console.log(deleteButton);
+
 
 // const cardTitle = document.querySelector('.card-title')
 const main = document.querySelector('main')
@@ -22,8 +21,11 @@ class Project{
     constructor(name){
         this.name = name;
         this.id = idMaker();
-        this.displayProject = this.displayProject.bind(this)
-        this.deleteProject = this.deleteProject.bind(this)
+        this.displayProject = this.displayProject.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
+        this.handleAddTask = this.handleAddTask.bind(this);
+        // this.addTaskToProject = this.addTaskToProject.bind(this)
+        this.tasks = [];
     }
     addToShell(){
         const div = document.createElement('div')
@@ -39,9 +41,13 @@ class Project{
         const html = cardMaker(this.name)
         main.innerHTML = html
         console.log(this);
+        this.generateTask();
         fadeForCard();
         const deleteButton = document.querySelector('.delete');
         deleteButton.addEventListener('click',this.deleteProject)
+        const addTaskButton = document.querySelector('.task-add')
+        addTaskButton.addEventListener('click',this.handleAddTask)
+
     }
     markAsSelected(){
         const divProject = document.querySelectorAll('.project')
@@ -59,7 +65,31 @@ class Project{
         // if will be needed remove from projectSheel
         hideCard()
     }
-    
+    handleAddTask(){
+        const taskName = document.getElementById('task-name')
+        if(taskName.value=== '')return
+        let taskObj = {}
+        taskObj["Name"] = taskName.value
+        taskObj["checked"] = false
+        this.tasks.push(taskObj)
+        console.log(this.tasks);
+        console.log(this);
+        this.generateTask()
+        taskName.value = ''
+    }
+    generateTask(){
+        const tasksDiv = document.querySelector('.tasks');
+        const html = this.tasks.map(task => `
+        <div class="task">
+        <input type="checkbox">
+        <div class="text">${task.Name}</div>
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19,13H5V11H19V13Z" />
+        </svg>
+        </div>`).join('');
+        tasksDiv.innerHTML = html 
+    }
+
 }
 
 
