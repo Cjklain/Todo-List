@@ -24,7 +24,7 @@ class Project{
         this.displayProject = this.displayProject.bind(this);
         this.deleteProject = this.deleteProject.bind(this);
         this.handleAddTask = this.handleAddTask.bind(this);
-        // this.addTaskToProject = this.addTaskToProject.bind(this)
+        this.handleCheckbox = this.handleCheckbox.bind(this);
         this.tasks = [];
     }
     addToShell(){
@@ -81,13 +81,20 @@ class Project{
         const tasksDiv = document.querySelector('.tasks');
         const html = this.tasks.map(task => `
         <div class="task">
-        <input type="checkbox">
+        <input type="checkbox" ${task.checked ? 'checked' : ""}>
         <div class="text">${task.Name}</div>
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,13H5V11H19V13Z" />
         </svg>
         </div>`).join('');
-        tasksDiv.innerHTML = html 
+        tasksDiv.innerHTML = html
+        const checkboxsEl = tasksDiv.querySelectorAll('input[type=checkbox]')
+        checkboxsEl.forEach(checkbox => checkbox.addEventListener('change',this.handleCheckbox))
+
+    }
+    handleCheckbox(){
+        // must put some if to check whitch box 
+        this.tasks.forEach(task => console.log(task.checked));
     }
 
 }
