@@ -25,6 +25,7 @@ class Project{
         this.deleteProject = this.deleteProject.bind(this);
         this.handleAddTask = this.handleAddTask.bind(this);
         this.handleCheckbox = this.handleCheckbox.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.tasks = [];
     }
     addToShell(){
@@ -83,19 +84,29 @@ class Project{
         <div class="task">
         <input type="checkbox" ${task.checked ? 'checked' : ""}>
         <div class="text">${task.Name}</div>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <svg class="delete-task" style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,13H5V11H19V13Z" />
         </svg>
         </div>`).join('');
         tasksDiv.innerHTML = html
         const checkboxsEl = tasksDiv.querySelectorAll('input[type=checkbox]')
         checkboxsEl.forEach(checkbox => checkbox.addEventListener('change',this.handleCheckbox))
+        const deleteIcons = tasksDiv.querySelectorAll('.delete-task')
+        deleteIcons.forEach(icon => icon.addEventListener('click',this.handleDelete))
 
     }
-    handleCheckbox(){
-        // must put some if to check whitch box 
-        this.tasks.forEach(task => console.log(task.checked));
+    handleCheckbox(e){
+        const currentTaskName = e.currentTarget.parentElement.querySelector('.text').innerText
+        const taskToChange = this.tasks.find(task => task.Name === currentTaskName)
+        taskToChange.checked = !taskToChange.checked
     }
+    handleDelete(e){
+        const currentTaskName = e.currentTarget.parentElement.querySelector('.text').innerText;
+        console.log(currentTaskName);
+        this.tasks = this.tasks.filter(task => task.Name != currentTaskName);
+        this.generateTask();
+    }
+
 
 }
 
