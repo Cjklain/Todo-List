@@ -4,18 +4,8 @@ import {fadeForCard, hideCard} from './card';
 import cardMaker from './cardMaker';
 
 const nameInput = document.getElementById('Name');
-
 const addButton = document.querySelector('.add-project');
-
-
 const divProjects = document.querySelector('.projects')
-const deleteButton = document.querySelector('.delete')
-
-
-// const cardTitle = document.querySelector('.card-title')
-const main = document.querySelector('main')
-
-let projectSheel = []
 
 class Project{
     constructor(name){
@@ -39,9 +29,9 @@ class Project{
         div.addEventListener('click', this.markAsSelected)
     }
     displayProject(){
+        const main = document.querySelector('main')
         const html = cardMaker(this.name)
         main.innerHTML = html
-        console.log(this);
         this.generateTask();
         fadeForCard();
         const deleteButton = document.querySelector('.delete');
@@ -60,21 +50,20 @@ class Project{
         })
     }
     deleteProject(){
-        console.log(this);
         const toDelete = document.querySelector(`[data-id="${this.id}"]`)
         divProjects.removeChild(toDelete);
-        // if will be needed remove from projectSheel
         hideCard()
     }
     handleAddTask(){
         const taskName = document.getElementById('task-name')
         if(taskName.value=== '')return
+        let checkforDouble = false
+        checkforDouble = this.tasks.find(task=> task.Name === taskName.value);
+        if(checkforDouble)return
         let taskObj = {}
         taskObj["Name"] = taskName.value
         taskObj["checked"] = false
         this.tasks.push(taskObj)
-        console.log(this.tasks);
-        console.log(this);
         this.generateTask()
         taskName.value = ''
     }
@@ -102,24 +91,21 @@ class Project{
     }
     handleDelete(e){
         const currentTaskName = e.currentTarget.parentElement.querySelector('.text').innerText;
-        console.log(currentTaskName);
         this.tasks = this.tasks.filter(task => task.Name != currentTaskName);
         this.generateTask();
     }
-
-
 }
 
 
 addButton.addEventListener('click', addProject)
 
+let projectSheel = []
+console.log(projectSheel);
 function addProject(e){
     if(nameInput.value === '') return
     const project = new Project(nameInput.value)
     projectSheel.push(project)
     nameInput.value = '';
-    console.log(projectSheel);
-
     project.addToShell()
     if(projectSheel.length>=9){
         alert('sorry you reach limit')

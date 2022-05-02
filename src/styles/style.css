@@ -192,6 +192,5 @@ main .card .card-body .tasks .task{
     background-color: #e2e8f0;;
     padding: 5px;
     border-top: 1px solid grey;
-    /* border-right: 1px solid grey; */
     box-shadow: 0px 0px 1px black;
 }
